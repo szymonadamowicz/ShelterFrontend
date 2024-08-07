@@ -1,10 +1,10 @@
-import { Box } from '@mui/material';
 import React from 'react';
+import ImageCarousel from './components/ImageCarousel';
 
 function App() {
   return (
     <div>
-      test
+      <ImageCarousel/>
     </div>
   );
 }
