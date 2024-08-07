@@ -1,10 +1,10 @@
 import React from 'react';
-import ImageCarousel from './components/ImageCarousel';
+import HomePage from './pages/HomePage';
 
 function App() {
   return (
     <div>
-      <ImageCarousel/>
+      <HomePage/>
     </div>
   );
 }
