@@ -3,6 +3,7 @@ import React from "react";
 import ImageCarousel from "../components/HomePage/ImageCarousel";
 import AboutUs from "../components/HomePage/AboutUs";
 import PageOverlay from "../components/PageOverlay";
+import { Link } from "react-router-dom";
 
 export default function HomePage() {
   return (
@@ -15,6 +16,7 @@ export default function HomePage() {
         alignItems="center"
       >
         <Typography color={"white"}>Shelter App</Typography>
+        <Link to={"/adopt"}><Typography  color="red">Adopt</Typography></Link>
         <ImageCarousel imagesToDisplay={4} />
       </Box>
       <Box width={"100%"}>
