@@ -1,14 +1,18 @@
 import { Box, Button, Typography } from "@mui/material";
-import React, { useState } from "react";
+import {  useNavigate } from "react-router-dom";
 
 
 const HomeTags = () => {
+
+const navigate = useNavigate();
+
   const tagName = [
-    { img: "", text: "1asd" },
-    { img: "", text: "2asd" },
-    { img: "", text: "1asd" },
-    { img: "", text: "2asd" },
-    { img: "", text: "1asd" },
+    { img: "", text: "Adopt" },
+    { img: "", text: "Map" },
+    { img: "", text: "Shelters" },
+    { img: "", text: "Liked" },
+    { img: "", text: "Donate" },
+    { img: "", text: "Account" },
   ];
 
   return (
@@ -16,7 +20,7 @@ const HomeTags = () => {
       {tagName.map((item, index) => (
         <Button
           onClick={() => {
-            console.log(index);
+            navigate(`/${item.text.toLowerCase()}`)
           }}
           style={{
             backgroundColor: "brown",

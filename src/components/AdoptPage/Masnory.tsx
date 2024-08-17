@@ -1,16 +1,17 @@
-import React from "react";
-import { Box, Grid, Typography } from "@mui/material";
-import { useNavigate } from "react-router-dom";
+import React, { useState } from "react";
+import { Box, Grid, TextField, Typography } from "@mui/material";
+import { Link, useNavigate } from "react-router-dom";
 
 interface MasonryPropsTypes {
   columnCount: number;
   page: number;
   numOfCards: number;
-  cards: any;
+  cards: string[];
 }
 
 interface CardProps {
-  index: number;
+  name: string;
+  onClick: () => void;
 }
 
 const AdoptMasonry: React.FC<MasonryPropsTypes> = ({
@@ -20,17 +21,21 @@ const AdoptMasonry: React.FC<MasonryPropsTypes> = ({
   cards,
 }) => {
   const navigate = useNavigate();
+  const [searchedPet, setSearchedPet] = useState("");
 
-  const Card: React.FC<CardProps> = ({ index }) => {
+  const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setSearchedPet(event.target.value);
+  };
+
+  const filteredAndSortedCards = cards.filter((card: string) =>
+    card.toLowerCase().includes(searchedPet.toLowerCase())
+  );
+
+  const Card: React.FC<CardProps> = ({ name, onClick }) => {
     return (
       <Box
         component="button"
-        onClick={() => {
-          console.log(index + numOfCards * page);
-
-          navigate(`/adoptanimalpage/${index}`);
-
-        }}
+        onClick={onClick}
         sx={{
           padding: 0,
           border: "none",
@@ -57,7 +62,7 @@ const AdoptMasonry: React.FC<MasonryPropsTypes> = ({
           <img
             src="https://picsum.photos/200/160"
             alt="random"
-            style={{ height: 150, width: "100%" }}
+            style={{ height: 140, width: "100%" }}
           />
           <Box
             display="flex"
@@ -75,7 +80,7 @@ const AdoptMasonry: React.FC<MasonryPropsTypes> = ({
               fontSize={"2vh"}
               p={1}
             >
-              Milosek
+              {name}
             </Typography>
           </Box>
         </Box>
@@ -91,16 +96,36 @@ const AdoptMasonry: React.FC<MasonryPropsTypes> = ({
       overflow={"auto"}
       flexDirection={"column"}
     >
-      <Box>
+      <Box flexDirection={"row"} display={"flex"} alignSelf={"center"}>
+        <Link to={"/"}>
+          <Typography color="blue">Home</Typography>
+        </Link>
+
         <Typography>Adopt</Typography>
       </Box>
-
-      <Grid container spacing={1}>
-        {cards
+      <Box p={1}>
+        <TextField
+          id="outlined-basic"
+          label="Search"
+          placeholder="Search a pet's name"
+          variant="outlined"
+          fullWidth
+          size="small"
+          value={searchedPet}
+          onChange={handleSearchChange}
+        />
+      </Box>
+      <Grid container spacing={1} pr={1} pl={1}>
+        {filteredAndSortedCards
           .slice(numOfCards * page, numOfCards * (page + 1))
-          .map((_: any, index: number) => (
+          .map((name: string, index: number) => (
             <Grid item xs={12 / columnCount} key={index}>
-              <Card index={index} />
+              <Card
+                name={name}
+                onClick={() => {
+                  navigate(`/adopt/adoptanimalpage/${cards.indexOf(name)}`);
+                }}
+              />
             </Grid>
           ))}
       </Grid>
