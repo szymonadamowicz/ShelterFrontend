@@ -7,7 +7,7 @@ interface ShelterDisplayProps {
 
 const ShelterDisplay:React.FC<ShelterDisplayProps> = ({children}) => {
     return(
-        <Box width={"95%"} height={100} bgcolor={"red"}>
+        <Box width={"100%"} height={"auto"} minHeight={130} bgcolor={"green"}>
             {children}
         </Box>
     )

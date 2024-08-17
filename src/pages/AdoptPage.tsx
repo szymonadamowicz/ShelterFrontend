@@ -4,9 +4,8 @@ import PageOverlay from "../components/PageOverlay";
 import AdoptPagesLayout from "../components/PagesTemplateLayout";
 
 const AdoptPage = () => {
-
-  const [page, setPage]= useState(0)
-  const numOfCards = 9
+  const [page, setPage] = useState(0);
+  const numOfCards = 9;
   const cards = [
     "Bella",
     "Max",
@@ -17,15 +16,36 @@ const AdoptPage = () => {
     "Nala",
     "Milo",
     "Daisy",
-    "Oliver"
-  ];
-    
-  const maxPage = Math.ceil(cards.length / numOfCards)
+    "Oliver",
+  ].map((name, index) => ({ name, originalIndex: index }));
+
+  const maxPage = Math.ceil(cards.length / numOfCards);
+
+  const [searchedText, setSearchedText] = useState("");
+
+  const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setSearchedText(event.target.value);
+  };
 
   return (
     <PageOverlay>
-      <AdoptPagesLayout page={page} setPageIncrement={()=>setPage(page+1)} setPageDecrement={()=>setPage(page-1)} maxPage={maxPage-1}>
-        <AdoptMasnory columnCount={3} page={page} numOfCards={9} cards={cards}/>
+      <AdoptPagesLayout
+        page={page}
+        setPageIncrement={() => setPage(page + 1)}
+        setPageDecrement={() => setPage(page - 1)}
+        maxPage={maxPage - 1}
+        textAreaVisible={true}
+        searchedText={searchedText}
+        handleSearchChange={handleSearchChange}
+      >
+        <AdoptMasnory
+          columnCount={3}
+          cards={cards
+            .filter((card) =>
+              card.name.toLowerCase().includes(searchedText.toLowerCase())
+            )
+            .slice(numOfCards * page, numOfCards * (page + 1))}
+        />
       </AdoptPagesLayout>
     </PageOverlay>
   );

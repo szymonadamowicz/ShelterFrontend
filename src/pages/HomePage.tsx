@@ -7,7 +7,7 @@ export default function HomePage() {
   return (
     <PageOverlay>
 
-      <Box bgcolor={"red"}>
+      <Box bgcolor={"red"} height={"100%"} minHeight={"100vh"}>
         <Box
           textAlign="center"
           display="flex"
@@ -15,14 +15,14 @@ export default function HomePage() {
           alignItems="center"
           width={"100%"}
         >
-          <Typography color={"white"}>Shelter App</Typography>
+          <Typography color={"white"} fontSize={20}>Shelter App</Typography>
 
           <ImageCarousel imagesToDisplay={4} />
         </Box>
         <Box width={"100%"}>
           <AboutUs
             texts={[
-              `Our shelter is dedicated to rescuing and rehoming animals in need. 
+              `Our site is dedicated to rescuing and rehoming animals in need. 
   We provide a safe and loving environment for abandoned and stray animals until they find their forever homes. 
   Our team of caring professionals works tirelessly to ensure the well-being of every animal that comes through our doors. 
   We offer a range of services including medical care, behavioral training, and socialization to prepare our animals for adoption. 
