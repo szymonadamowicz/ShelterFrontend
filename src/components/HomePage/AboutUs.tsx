@@ -1,16 +1,9 @@
 import { Box, Typography } from "@mui/material";
 import { useState } from "react";
 import HomeTags from "./HomeTags";
+import { ExpandableTextProps, AboutUsProps } from "../types";
 
-interface ExpandableTextProps {
-  title: string;
-  text: string;
-  maxChar: number;
-}
 
-interface AboutUsProps {
-  texts: string[];
-}
 
 const ExpandableText: React.FC<ExpandableTextProps> = ({
   title,

@@ -1,9 +1,7 @@
 import { Box, Typography } from "@mui/material";
+import { CardProps } from "../types";
 
-interface CardProps {
-    name: string;
-    onClick: () => void;
-  }
+
 
 const AdoptDisplay: React.FC<CardProps> = ({ name, onClick }) => {
     return (
@@ -35,7 +33,7 @@ const AdoptDisplay: React.FC<CardProps> = ({ name, onClick }) => {
         >
           <img
             src="https://picsum.photos/200/160"
-            alt="random"
+            alt="random-pic"
             style={{ height: 140, width: "100%" }}
           />
           <Box

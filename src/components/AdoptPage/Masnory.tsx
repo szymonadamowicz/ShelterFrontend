@@ -1,14 +1,8 @@
 import React from "react";
-import { Box, Grid, Typography } from "@mui/material";
+import { Box, Grid } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import AdoptDisplay from "./AdoptDisplay";
-
-interface MasonryPropsTypes {
-  columnCount: number;
-  cards: { name: string; originalIndex: number }[];
-}
-
-
+import { MasonryPropsTypes } from "../types";
 
 const AdoptMasonry: React.FC<MasonryPropsTypes> = ({
   columnCount,

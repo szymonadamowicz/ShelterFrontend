@@ -1,4 +1,4 @@
-import AdoptAnimal from "../components/AdoptPage/AdoptAnimal";
+import AdoptAnimal from "../components/AdoptPage/AdoptAnimalPageView";
 import PageOverlay from "../components/PageOverlay";
 
 const AdoptAnimalPage = () => {

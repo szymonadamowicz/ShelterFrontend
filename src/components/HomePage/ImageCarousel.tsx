@@ -35,7 +35,7 @@ const ImageCarousel = ({ imagesToDisplay = 4 }) => {
         <Slider {...settings} ref={sliderRef}>
           {imgList.map((src, index) => (
             <Box key={index} sx={{ margin: "25px 1px" }}>
-              <img src={src} alt={`image-${index}`} style={{width:"13.5vw"}} />
+              <img src={src} alt={`${index}-pic`} style={{width:"13.5vw"}} />
             </Box>
           ))}
         </Slider>

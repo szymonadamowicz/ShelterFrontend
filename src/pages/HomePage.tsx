@@ -5,7 +5,7 @@ import PageOverlay from "../components/PageOverlay";
 
 export default function HomePage() {
   return (
-    <PageOverlay>
+    <PageOverlay backButton={false}>
 
       <Box bgcolor={"red"} height={"100%"} minHeight={"100vh"}>
         <Box

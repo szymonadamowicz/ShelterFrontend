@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import AdoptMasnory from "../components/AdoptPage/Masnory";
 import PageOverlay from "../components/PageOverlay";
-import AdoptPagesLayout from "../components/PagesTemplateLayout";
+import PagesTemplateLayout from "../components/PagesTemplateLayout";
 
 const AdoptPage = () => {
   const [page, setPage] = useState(0);
@@ -29,7 +29,7 @@ const AdoptPage = () => {
 
   return (
     <PageOverlay>
-      <AdoptPagesLayout
+      <PagesTemplateLayout
         page={page}
         setPageIncrement={() => setPage(page + 1)}
         setPageDecrement={() => setPage(page - 1)}
@@ -37,6 +37,7 @@ const AdoptPage = () => {
         textAreaVisible={true}
         searchedText={searchedText}
         handleSearchChange={handleSearchChange}
+        title="Adopt Page"
       >
         <AdoptMasnory
           columnCount={3}
@@ -46,7 +47,7 @@ const AdoptPage = () => {
             )
             .slice(numOfCards * page, numOfCards * (page + 1))}
         />
-      </AdoptPagesLayout>
+      </PagesTemplateLayout>
     </PageOverlay>
   );
 };

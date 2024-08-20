@@ -1,13 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import { Animal } from "../types";
+import PageOverlay from "../PageOverlay";
+import { Box } from "@mui/material";
 
-interface Animal {
-    id: string;
-    name: string;
-    description: string;
-  }  
-
-const AdoptAnimal: React.FC = () => {
+const AdoptAnimalPageView: React.FC = () => {
   const { id } = useParams<{ id: string }>();
   const [animalData, setAnimalData] = useState<Animal | null>(null);
   const [loading, setLoading] = useState(true);
@@ -17,20 +14,24 @@ const AdoptAnimal: React.FC = () => {
       const data = await mockFetchAnimal(animalId);
       console.log(data);
       setAnimalData(data);
-      setLoading(false); 
+      setLoading(false);
     };
 
     fetchAnimal(id ? id : "");
   }, [id]);
 
   if (loading) {
-    return <div>Loading...</div>; 
+    return <div>Loading...</div>;
   }
 
   return (
-    <div>
-        {animalData?.name}
-    </div>
+    <PageOverlay>
+      <Box bgcolor={"red"} height={"100%"} minHeight={"100vh"}>
+        <Box display={"flex"} justifyContent={"center"} height={"5vh"} alignItems={"center"} alignContent={"center"}>
+          {animalData?.name}
+        </Box>
+      </Box>
+    </PageOverlay>
   );
 };
 
@@ -42,4 +43,4 @@ const mockFetchAnimal = async (id: string): Promise<Animal> => {
   });
 };
 
-export default AdoptAnimal;
+export default AdoptAnimalPageView;

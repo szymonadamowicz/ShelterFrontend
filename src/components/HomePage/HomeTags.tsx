@@ -37,7 +37,7 @@ const navigate = useNavigate();
           }}
           key={index}
         >
-          <img src={item.img} alt="" />
+          {/* <img src={item.img} alt="tag-pic" /> */}
           <Typography>{item.text}</Typography>
         </Button>
       ))}
