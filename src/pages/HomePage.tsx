@@ -3,10 +3,10 @@ import ImageCarousel from "../components/HomePage/ImageCarousel";
 import AboutUs from "../components/HomePage/AboutUs";
 import PageOverlay from "../components/PageOverlay";
 
+
 export default function HomePage() {
   return (
     <PageOverlay backButton={false}>
-
       <Box bgcolor={"red"} height={"100%"} minHeight={"100vh"}>
         <Box
           textAlign="center"
@@ -15,7 +15,9 @@ export default function HomePage() {
           alignItems="center"
           width={"100%"}
         >
-          <Typography color={"white"} fontSize={20}>Shelter App</Typography>
+          <Typography color={"white"} fontSize={20}>
+            Shelter App
+          </Typography>
 
           <ImageCarousel imagesToDisplay={4} />
         </Box>

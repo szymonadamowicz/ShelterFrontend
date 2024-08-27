@@ -19,7 +19,10 @@ export interface CardProps {
 
 export interface MasonryPropsTypes {
   columnCount: number;
-  cards: { name: string; originalIndex: number }[];
+  cards: { name: string; id: number, species: string; description: string; is_liked: boolean }[];
+  loading: boolean
+  cardsCount: any;
+  currentPage:number;
 }
 
 export interface ExpandableTextProps {

@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, Grid } from "@mui/material";
+import { Box, Grid, CircularProgress } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import AdoptDisplay from "./AdoptDisplay";
 import { MasonryPropsTypes } from "../types";
@@ -7,10 +7,12 @@ import { MasonryPropsTypes } from "../types";
 const AdoptMasonry: React.FC<MasonryPropsTypes> = ({
   columnCount,
   cards,
+  loading,
+  cardsCount,
+  currentPage
 }) => {
   const navigate = useNavigate();
 
-  
   return (
     <Box
       width="100%"
@@ -20,14 +22,28 @@ const AdoptMasonry: React.FC<MasonryPropsTypes> = ({
       flexDirection={"column"}
     >
       <Grid container spacing={1} pr={1} pl={1}>
-        {cards.map((card, index) => (
+        {(loading ? cardsCount : cards).map((_: any, index: number) => (
           <Grid item xs={12 / columnCount} key={index}>
-            <AdoptDisplay
-              name={card.name}
-              onClick={() => {
-                navigate(`/adopt/adoptanimalpage/${card.originalIndex}`);
-              }}
-            />
+            <Box
+              height={180}
+              width="100%"
+              display="flex"
+              alignItems="center"
+              justifyContent="center"
+            >
+              {loading ? (
+                <CircularProgress />
+              ) : (
+                <AdoptDisplay
+                  name={cards[index]?.name}
+                  onClick={() => {
+                    navigate(`/adopt/adoptanimalpage/${cards[index]?.id}?page=${currentPage}`, {
+                      state: { page: currentPage },
+                    });
+                  }}
+                />
+              )}
+            </Box>
           </Grid>
         ))}
       </Grid>

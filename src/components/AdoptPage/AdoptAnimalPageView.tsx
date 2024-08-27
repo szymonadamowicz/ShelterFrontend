@@ -3,44 +3,37 @@ import { useParams } from "react-router-dom";
 import { Animal } from "../types";
 import PageOverlay from "../PageOverlay";
 import { Box } from "@mui/material";
+import useSheltersAndPets from "../backend/useSheltersAndPets";
 
 const AdoptAnimalPageView: React.FC = () => {
   const { id } = useParams<{ id: string }>();
+  const { pets, loading } = useSheltersAndPets();
   const [animalData, setAnimalData] = useState<Animal | null>(null);
-  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const fetchAnimal = async (animalId: string) => {
-      const data = await mockFetchAnimal(animalId);
-      console.log(data);
-      setAnimalData(data);
-      setLoading(false);
-    };
+    if (!loading && pets.length > 0) {
+      const animal = pets.find(pet => String(pet.id) === id);
+      setAnimalData(animal);
+    }
+  }, [id, pets, loading]);
 
-    fetchAnimal(id ? id : "");
-  }, [id]);
+  // if (loading) {
+  //   return <div>Loading...</div>;
+  // }
 
-  if (loading) {
-    return <div>Loading...</div>;
-  }
+  // if (!animalData) {
+  //   return <div>No animal found with ID {id}</div>;
+  // }
 
   return (
     <PageOverlay>
       <Box bgcolor={"red"} height={"100%"} minHeight={"100vh"}>
         <Box display={"flex"} justifyContent={"center"} height={"5vh"} alignItems={"center"} alignContent={"center"}>
-          {animalData?.name}
+          {animalData ? animalData.name: "loading..."}
         </Box>
       </Box>
     </PageOverlay>
   );
-};
-
-const mockFetchAnimal = async (id: string): Promise<Animal> => {
-  return new Promise((resolve) => {
-    setTimeout(() => {
-      resolve({ id, name: `Animal ${id}`, description: "Some description" });
-    }, 500);
-  });
 };
 
 export default AdoptAnimalPageView;

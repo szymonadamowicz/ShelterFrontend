@@ -3,16 +3,18 @@ import { MapContainer, TileLayer } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import { LatLngExpression } from "leaflet";
 import MapPopup from "./MapPopup";
-import { TextField } from "@mui/material";
+import { Button, TextField } from "@mui/material";
+import { useNavigate } from "react-router-dom";
 
 const MapComponent: React.FC = () => {
   const position: LatLngExpression = [54.352001, 18.646642];
-  
+
   const [searchedText, setSearchedText] = useState("");
 
   const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setSearchedText(event.target.value);
   };
+  const navigate = useNavigate();
 
   return (
     <MapContainer
@@ -20,6 +22,14 @@ const MapComponent: React.FC = () => {
       zoom={13}
       style={{ height: "100vh", width: "100%" }}
     >
+      <Button
+        sx={{ position: "absolute", zIndex: 9999, left:"6%", top:20, bgcolor:"white" }}
+        onClick={() => {
+          navigate(-1);
+        }}
+      >
+        Back
+      </Button>
       <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
       <TextField
         id="outlined-basic"
@@ -37,7 +47,7 @@ const MapComponent: React.FC = () => {
           width: "70%",
           left: "50%",
           transform: "translateX(-50%)",
-          backgroundColor:"white",
+          backgroundColor: "white",
           borderRadius: 16,
         }}
         sx={{
@@ -54,7 +64,7 @@ const MapComponent: React.FC = () => {
           },
         }}
       />
-      <MapPopup searchedText={searchedText}/>
+      <MapPopup searchedText={searchedText} />
     </MapContainer>
   );
 };

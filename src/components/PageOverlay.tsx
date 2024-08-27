@@ -18,7 +18,7 @@ const PageOverlay: React.FC<PageDisplayProp> = ({
               navigate(-1);
             }}
           >
-            a
+            Back
           </Button>
         )}
         {children}
