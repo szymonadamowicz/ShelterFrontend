@@ -4,25 +4,36 @@ export interface Animal {
   id: string;
   name: string;
   description: string;
+  image_data:string
+  species: string;
+  shelter: number
 }
 
 export interface Shelter {
-    id: string;
-    name: string;
-    description: string;
-  }
+  id: string;
+  name: string;
+  description: string;
+}
 
 export interface CardProps {
   name: string;
   onClick: () => void;
+  image:string;
 }
 
 export interface MasonryPropsTypes {
   columnCount: number;
-  cards: { name: string; id: number, species: string; description: string; is_liked: boolean }[];
-  loading: boolean
+  cards: {
+    image_data: string;
+    name: string;
+    id: number;
+    species: string;
+    description: string;
+    is_liked: boolean;
+  }[];
+  loading: boolean;
   cardsCount: any;
-  currentPage:number;
+  currentPage: number;
 }
 
 export interface ExpandableTextProps {
@@ -40,9 +51,9 @@ export interface DisplayProp {
 }
 
 export interface PageDisplayProp {
-    children: ReactNode;
-    backButton?: boolean;
-  }
+  children: ReactNode;
+  backButton?: boolean;
+}
 
 export interface SheltersProps {
   shelters: { name: string; originalIndex: number }[];

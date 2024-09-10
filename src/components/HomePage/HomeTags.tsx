@@ -23,7 +23,7 @@ const navigate = useNavigate();
             navigate(`/${item.text.toLowerCase()}`)
           }}
           style={{
-            backgroundColor: "brown",
+            backgroundColor: "#A6B8A3",
             height: 50,
             width: 100,
             borderRadius: 26,
@@ -38,7 +38,7 @@ const navigate = useNavigate();
           key={index}
         >
           {/* <img src={item.img} alt="tag-pic" /> */}
-          <Typography>{item.text}</Typography>
+          <Typography color="#3A4E3E">{item.text}</Typography>
         </Button>
       ))}
     </Box>

@@ -7,7 +7,6 @@ import PageOverlay from "../components/PageOverlay";
 export default function HomePage() {
   return (
     <PageOverlay backButton={false}>
-      <Box bgcolor={"red"} height={"100%"} minHeight={"100vh"}>
         <Box
           textAlign="center"
           display="flex"
@@ -15,13 +14,13 @@ export default function HomePage() {
           alignItems="center"
           width={"100%"}
         >
-          <Typography color={"white"} fontSize={20}>
+          <Typography color={"#4b2e2b"} fontSize={20} mt={2}>
             Shelter App
           </Typography>
 
           <ImageCarousel imagesToDisplay={4} />
         </Box>
-        <Box width={"100%"}>
+        <Box width={"100%"} p={1}>
           <AboutUs
             texts={[
               `Our site is dedicated to rescuing and rehoming animals in need. 
@@ -38,7 +37,6 @@ export default function HomePage() {
             ]}
           />
         </Box>
-      </Box>
     </PageOverlay>
   );
 }

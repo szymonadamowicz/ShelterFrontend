@@ -3,7 +3,7 @@ import { CardProps } from "../types";
 
 
 
-const AdoptDisplay: React.FC<CardProps> = ({ name, onClick }) => {
+const AdoptDisplay: React.FC<CardProps> = ({ name, onClick, image }) => {
     return (
       <Box
         component="button"
@@ -32,7 +32,7 @@ const AdoptDisplay: React.FC<CardProps> = ({ name, onClick }) => {
           borderRadius={4}
         >
           <img
-            src="https://picsum.photos/200/160"
+            src={image}
             alt="random-pic"
             style={{ height: 140, width: "100%" }}
           />
@@ -44,6 +44,7 @@ const AdoptDisplay: React.FC<CardProps> = ({ name, onClick }) => {
             pl={1}
           >
             <Typography
+            color={"#4b2e2b"}
               noWrap
               whiteSpace="nowrap"
               overflow="hidden"

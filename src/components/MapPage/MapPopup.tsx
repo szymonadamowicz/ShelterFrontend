@@ -4,44 +4,14 @@ import "leaflet/dist/leaflet.css";
 import { Marker, Popup } from "react-leaflet";
 import { styled } from "styled-components";
 import L, { LatLngTuple } from "leaflet";
-
-// interface PositionsType {
-//   coordinates: LatLngTuple;
-//   originalIndex: number;
-// }
+import useSheltersAndPets from "../../backend/useSheltersAndPets";
 
 interface PopupProps {
   searchedText: string;
 }
 
 const MapPopup: React.FC<PopupProps> = ({ searchedText }) => {
-  const navigate = useNavigate();
-
-  const positions = [
-    {
-      name: "Happy Tails Shelter",
-      coordinates: [54.352001, 18.646642] as LatLngTuple,
-    },
-    {
-      name: "Paws and Claws Haven",
-      coordinates: [53.352001, 18.646642] as LatLngTuple,
-    },
-    {
-      name: "Furry Friends Refuge",
-      coordinates: [54.352001, 19.646642] as LatLngTuple,
-    },
-    {
-      name: "Whiskers Sanctuary",
-      coordinates: [52.352001, 17.646642] as LatLngTuple,
-    },
-    {
-      name: "Safe Paws Shelter",
-      coordinates: [54.352001, 17.646642] as LatLngTuple,
-    },
-  ].map((shelter, index) => ({
-    ...shelter,
-    originalIndex: index,
-  }));
+  const { shelters } = useSheltersAndPets();
 
   L.Icon.Default.mergeOptions({
     iconRetinaUrl: require("leaflet/dist/images/marker-icon-2x.png"),
@@ -74,14 +44,14 @@ const MapPopup: React.FC<PopupProps> = ({ searchedText }) => {
 
   return (
     <div>
-      {positions
+      {shelters.length > 0 && shelters
         .filter((wo) =>
           wo.name.toLowerCase().includes(searchedText.toLowerCase())
         )
         .map((item) => (
           <Marker
-            key={item.originalIndex}
-            position={item.coordinates}
+            key={item.id}
+            position={[item.x_coordinate, item.y_coordinate] as LatLngTuple}
             icon={customIcon}
           >
             <StyledPop>
@@ -102,10 +72,10 @@ const MapPopup: React.FC<PopupProps> = ({ searchedText }) => {
                 <div>
                   <Button
                     onClick={() => {
-                      navigate(`/shelters/shelterpage/${item.originalIndex}`);
+                      window.location.href = item.news_link;
                     }}
                   >
-                    Shelter {item.originalIndex}
+                    Shelter {item.id}
                   </Button>
                 </div>
               </Box>
@@ -114,6 +84,5 @@ const MapPopup: React.FC<PopupProps> = ({ searchedText }) => {
         ))}
     </div>
   );
-};
-
-export default MapPopup;
+}
+  export default MapPopup

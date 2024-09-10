@@ -8,20 +8,55 @@ const PageOverlay: React.FC<PageDisplayProp> = ({
   backButton = true,
 }) => {
   const navigate = useNavigate();
+
   return (
-    <Box bgcolor="blue" width="100%" height={"100%"} minHeight={"100vh"}>
-      <Box width="55%" mx="auto">
+    <Box
+      sx={{
+        backgroundImage: "url('/background.jpeg')",
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        width: "100%",
+        height: "100%",
+        minHeight: "100vh",
+        overflow: "hidden",
+      }}
+    >
+      <Box width="55%" mx="auto" position="relative">
         {backButton && (
-          <Button
+          <Box
             sx={{ position: "absolute" }}
-            onClick={() => {
-              navigate(-1);
+            height="5vh"
+            display="flex"
+            alignItems="center"
+            justifyContent="flex-start"
+            zIndex={1}
+          >
+            <Button
+              sx={{ position: "absolute" }}
+              onClick={() => {
+                navigate(-1);
+              }}
+            >
+              Back
+            </Button>
+          </Box>
+        )}
+        <Box>
+          <Box
+            sx={{
+              backgroundImage: "url('/background_front.jpeg')",
+              backgroundSize: "cover",
+              backgroundPosition: "center",
+              width: "100%",
+              height: "100%",
+              minHeight: "100vh",
+              overflow: "hidden",
+              
             }}
           >
-            Back
-          </Button>
-        )}
-        {children}
+            {children}
+          </Box>
+        </Box>
       </Box>
     </Box>
   );

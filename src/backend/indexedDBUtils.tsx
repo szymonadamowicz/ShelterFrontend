@@ -1,13 +1,15 @@
 const openDB = async (): Promise<IDBDatabase> => {
-  const request = indexedDB.open('MyDatabase', 1);
+  const request = indexedDB.open('MyDatabase', 2);
 
   request.onupgradeneeded = (event: IDBVersionChangeEvent) => {
     const db = (event.target as IDBRequest<IDBDatabase>).result;
     if (!db.objectStoreNames.contains('pets')) {
       db.createObjectStore('pets', { keyPath: 'id' });
     }
+    if (!db.objectStoreNames.contains('shelters')) {
+      db.createObjectStore('shelters', { keyPath: 'id' });
+    }
   };
-
   return new Promise((resolve, reject) => {
     request.onerror = () => reject(request.error);
     request.onsuccess = () => resolve(request.result);

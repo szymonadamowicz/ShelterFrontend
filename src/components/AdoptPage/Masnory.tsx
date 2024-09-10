@@ -36,6 +36,7 @@ const AdoptMasonry: React.FC<MasonryPropsTypes> = ({
               ) : (
                 <AdoptDisplay
                   name={cards[index]?.name}
+                  image={cards[index]?.image_data}
                   onClick={() => {
                     navigate(`/adopt/adoptanimalpage/${cards[index]?.id}?page=${currentPage}`, {
                       state: { page: currentPage },
