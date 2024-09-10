@@ -8,7 +8,7 @@ const useSheltersAndPets = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   
-  const token = "token";
+  const token = "secret key";
   const petsURL = 'https://respectable-sharlene-foodie-5c103fae.koyeb.app/api/pets/';
   const sheltersURL = 'https://respectable-sharlene-foodie-5c103fae.koyeb.app/api/shelters/';
 
