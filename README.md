@@ -1,46 +1,95 @@
-# Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Shelter Finder App
 
-## Available Scripts
+This project is a React application for a shelter adoption service, designed to help users find and adopt pets. The application includes features such as browsing available pets, viewing detailed information about specific pets, navigating shelters on a map, and searching for both pets and shelters. It uses React Router for navigation, Axios for backend requests, and Material UI for consistent design. The project is styled with Tailwind CSS.
 
-In the project directory, you can run:
+## Table of Contents
 
-### `npm start`
+- [Demo](#demo)
+- [Features](#features)
+- [Technologies](#technologies)
+- [Installation](#installation)
+- [Usage](#usage)
+- [API Integration](#api-integration)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Demo
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+You can see a live version of the Shelter Adoption App at [Shelter Finder](https://shelter-frontend-two.vercel.app).
 
-### `npm test`
+## Features
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- **Home Page**: A welcoming page that displays the shelter's mission, with a carousel of images showing adoptable animals.
+- **Adoption Page**: View a list of available animals, with filtering and pagination. Clicking on a pet leads to a detailed view of that animal, where users can learn more about the pet and the shelter that houses it.
+- **Map**: A map interface to display shelter locations, allowing users to explore shelters geographically.
+- **Shelters Page**: Displays a list of shelters, where users can search and navigate to specific shelters for more information.
+- **Pagination and Search**: Paginated views for animals and shelters, with integrated search functionality for better user experience.
 
-### `npm run build`
+## Technologies
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- **React**: Frontend framework used for building the user interface.
+- **React Router**: For handling routes and navigation between pages.
+- **TypeScript**: Provides type safety for JavaScript code.
+- **Axios**: For making API requests to the backend to fetch animal and shelter data.
+- **Material UI**: A UI component library used for styling the components.
+- **Leaflet**: For displaying and interacting with the map.
+- **Slick Carousel**: Used for the image carousel on the home page.
+- **Tailwind CSS**: Utility-first CSS framework for styling.
+- **React Testing Library & Jest**: For writing unit and integration tests.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Installation
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+To get started with this project, follow these steps:
 
-### `npm run eject`
+1. Clone the repository:
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+   ```bash
+   git clone https://github.com/your-username/shelter-adoption-app.git
+   cd shelter-adoption-app
+   ```
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+2. Install dependencies:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+   ```bash
+   npm install
+   ```
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+3. Run the application locally:
 
-## Learn More
+   ```bash
+   npm start
+   ```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+4. Open the application in the browser:
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+   ```
+   http://localhost:3000
+   ```
+
+## Usage
+
+### Home Page
+
+- Displays a carousel of images of pets available for adoption.
+- Presents information about the shelter's mission and purpose.
+
+### Adoption Page
+
+- Shows a paginated list of animals available for adoption.
+- Users can click on each animal to get more detailed information about the pet, including a picture and description.
+
+### Map
+
+- Interactive map displaying the locations of shelters.
+- Users can click on the map markers to view shelter information and navigate to their websites.
+
+### Shelters
+
+- A searchable list of shelters.
+- Allows users to explore shelters and see which animals are currently available.
+
+## API Integration
+
+This app relies on an external API (set up using Axios in `useSheltersAndPets.ts`) to fetch data for shelters and pets. The backend provides endpoints for retrieving:
+
+- `GET /shelters` - Retrieves a list of all shelters, including details like name, location, and available pets.
+- `GET /pets` - Fetches the animals that are available for adoption, including information such as name, species, description, and shelter details.
