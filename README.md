@@ -1,8 +1,7 @@
 
 # Shelter Finder App
 
-This project is a React application for a shelter adoption service, designed to help users find and adopt pets. The application includes features such as browsing available pets, viewing detailed information about specific pets, navigating shelters on a map, and searching for both pets and shelters. It uses React Router for navigation, Axios for backend requests, and Material UI for consistent design. The project is styled with Tailwind CSS.
-
+This project is a React application for a shelter adoption service, designed to help users find and adopt pets. The application includes features such as browsing available pets, viewing detailed information about specific pets, navigating shelters on a map, and searching for both pets and shelters. It uses React Router for navigation, Axios for backend requests, and Material UI for consistent design.
 ## Table of Contents
 
 - [Demo](#demo)
@@ -33,7 +32,6 @@ You can see a live version of the Shelter Adoption App at [Shelter Finder](https
 - **Material UI**: A UI component library used for styling the components.
 - **Leaflet**: For displaying and interacting with the map.
 - **Slick Carousel**: Used for the image carousel on the home page.
-- **Tailwind CSS**: Utility-first CSS framework for styling.
 - **React Testing Library & Jest**: For writing unit and integration tests.
 
 ## Installation
