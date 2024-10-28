@@ -26,18 +26,19 @@ const SheltersPage = () => {
           if (page < maxPage) {
             setPage(page + 1);
           }
-        }}
+        } }
         setPageDecrement={() => {
           if (page > 1) {
             setPage(page - 1);
           }
-        }}
+        } }
         maxPage={maxPage}
         textAreaVisible={true}
         searchedText={searchedText}
         handleSearchChange={handleSearchChange}
         title="Shelters"
-      >
+        backButton={true}     
+        >
         <SheltersList
           shelters={shelters
             .filter((shelter) =>

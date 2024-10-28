@@ -8,20 +8,23 @@ const ImageCarousel = ({ imagesToDisplay = 4 }) => {
   const sliderRef = useRef<Slider | null>(null);
   const [isLoading, setIsLoading] = useState(true);
 
-  const imgList = useMemo(() => [
-    "https://picsum.photos/id/1/200/100",
-    "https://picsum.photos/id/2/200/100",
-    "https://picsum.photos/id/3/200/100",
-    "https://picsum.photos/id/4/200/100",
-    "https://picsum.photos/id/13/200/100",
-    "https://picsum.photos/id/10/200/100",
-    "https://picsum.photos/id/15/200/100",
-    "https://picsum.photos/id/12/200/100",
-    "https://picsum.photos/id/9/200/100",
-    "https://picsum.photos/id/20/200/100",
-    "https://picsum.photos/id/21/200/100",
-    "https://picsum.photos/id/22/200/100",
-  ], []);
+  const imgList = useMemo(
+    () => [
+      "https://picsum.photos/id/1/200/100",
+      "https://picsum.photos/id/2/200/100",
+      "https://picsum.photos/id/3/200/100",
+      "https://picsum.photos/id/4/200/100",
+      "https://picsum.photos/id/13/200/100",
+      "https://picsum.photos/id/10/200/100",
+      "https://picsum.photos/id/15/200/100",
+      "https://picsum.photos/id/12/200/100",
+      "https://picsum.photos/id/9/200/100",
+      "https://picsum.photos/id/20/200/100",
+      "https://picsum.photos/id/21/200/100",
+      "https://picsum.photos/id/22/200/100",
+    ],
+    []
+  );
 
   useEffect(() => {
     const imgPromises = imgList.map((src) => {
@@ -44,11 +47,17 @@ const ImageCarousel = ({ imagesToDisplay = 4 }) => {
     swipeToSlide: true,
   };
 
-  const imageWidth = "200px";
-  const imageHeight = "100px";
+  const imageWidth = "150px";
+  const imageHeight = "130px";
 
   return (
-    <Box width="100%" margin="10px 0px">
+    <Box
+      width="100%"
+      maxWidth="95%"
+      pt={5}
+      ml={"2%"}
+      justifyContent="center"
+    >
       {isLoading ? (
         <Slider {...settings} ref={sliderRef}>
           {imgList.map((_, index) => (
@@ -60,7 +69,6 @@ const ImageCarousel = ({ imagesToDisplay = 4 }) => {
               sx={{
                 width: "100%",
                 height: imageHeight,
-                margin: "25px 0px",
               }}
             >
               <CircularProgress />
@@ -75,17 +83,16 @@ const ImageCarousel = ({ imagesToDisplay = 4 }) => {
               display="flex"
               justifyContent="center"
               alignItems="center"
-              sx={{ 
-                margin: "0 auto",
+              sx={{
                 width: imageWidth,
                 height: imageHeight,
-                bgcolor: index === 1 ? "red" : "blue", 
+
               }}
             >
               <img
                 src={src}
                 alt={`${index}-pic`}
-                style={{ width: "100%", height: "100%", objectFit: 'cover' }}
+                style={{ width: "90%", height: "100%", objectFit: "cover" }}
               />
             </Box>
           ))}
@@ -93,6 +100,6 @@ const ImageCarousel = ({ imagesToDisplay = 4 }) => {
       )}
     </Box>
   );
-};
+}
 
 export default ImageCarousel;

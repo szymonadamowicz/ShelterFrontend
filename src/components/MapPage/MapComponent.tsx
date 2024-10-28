@@ -3,7 +3,7 @@ import { MapContainer, TileLayer } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import { LatLngExpression } from "leaflet";
 import MapPopup from "./MapPopup";
-import { Button, TextField } from "@mui/material";
+import { Button, TextField, Typography } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 
 const MapComponent: React.FC = () => {
@@ -23,12 +23,33 @@ const MapComponent: React.FC = () => {
       style={{ height: "100vh", width: "100%" }}
     >
       <Button
-        sx={{ position: "absolute", zIndex: 9999, left:"6%", top:20, bgcolor:"white" }}
+        sx={{
+          position: "absolute",
+          zIndex: 9999,
+          left: "6%",
+          top: 20,
+          height: "3.5vh",
+          width: "5vh",
+          bgcolor: "#658a5f",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          "&:hover": {
+            bgcolor: "#4a7048",
+          },
+        }}
         onClick={() => {
           navigate(-1);
         }}
       >
-        Back
+        <Typography
+          fontSize={18}
+          fontWeight="bold"
+          color="white"
+          textAlign="center"
+        >
+          Back
+        </Typography>
       </Button>
       <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
       <TextField

@@ -37,7 +37,6 @@ const AdoptPage = () => {
   useEffect(() => {
     navigate(`?page=${page}`, { replace: true });
   }, [page, navigate]);
-  
 
   const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setSearchedText(event.target.value);
@@ -55,6 +54,7 @@ const AdoptPage = () => {
         searchedText={searchedText}
         handleSearchChange={handleSearchChange}
         title="Adopt Page"
+        backButton={true}
       >
         <AdoptMasonry
           columnCount={3}

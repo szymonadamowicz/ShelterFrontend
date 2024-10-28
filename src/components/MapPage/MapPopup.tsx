@@ -1,5 +1,4 @@
 import { Box, Button } from "@mui/material";
-import { useNavigate } from "react-router-dom";
 import "leaflet/dist/leaflet.css";
 import { Marker, Popup } from "react-leaflet";
 import { styled } from "styled-components";

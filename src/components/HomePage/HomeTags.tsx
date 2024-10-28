@@ -16,16 +16,16 @@ const navigate = useNavigate();
   ];
 
   return (
-    <Box display="flex" flexWrap="wrap">
+    <Box display="flex" flexWrap="wrap" width={"100%"} bgcolor={"#233728"} justifyContent={"space-between"} pl={2} pr={2}>
       {tagName.map((item, index) => (
         <Button
           onClick={() => {
             navigate(`/${item.text.toLowerCase()}`)
           }}
           style={{
-            backgroundColor: "#A6B8A3",
-            height: 50,
-            width: 100,
+            backgroundColor: "#658a5f",
+            height: 60,
+            width: 160,
             borderRadius: 26,
             display: "flex",
             flexDirection: "row",
@@ -38,7 +38,7 @@ const navigate = useNavigate();
           key={index}
         >
           {/* <img src={item.img} alt="tag-pic" /> */}
-          <Typography color="#3A4E3E">{item.text}</Typography>
+          <Typography color="white" fontWeight={"bold"} fontSize={25}>{item.text}</Typography>
         </Button>
       ))}
     </Box>

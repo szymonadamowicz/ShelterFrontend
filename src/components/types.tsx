@@ -81,4 +81,5 @@ export interface PageOverlayType {
   searchedText?: string;
   handleSearchChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
   title: string;
+  backButton:boolean
 }
